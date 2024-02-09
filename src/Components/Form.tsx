@@ -61,16 +61,18 @@ const Form = () => {
 
   return (
     <Box
-      id={"form-add-partner"}
       component={"form"}
+      id={"form-add-store"}
+      name={"form-add-store"}
       onSubmit={formik.handleSubmit}
-      sx={{ mt: 5 }}
+      noValidate
+      sx={{ mt: 1 }}
     >
       <Paper elevation={6} sx={{ padding: 5 }}>
         <Stack sx={{ marginBottom: 3 }}>
           <Typography component={"h1"}>Cadastro de Cliente</Typography>
         </Stack>
-        <Box component={"form"} noValidate autoCapitalize="off">
+        <Box autoCapitalize="off">
           <Grid container spacing={2}>
             <Grid item xs={12} sm={12} lg={6}>
               <TextField
@@ -290,12 +292,13 @@ const Form = () => {
               Cancelar
             </Button>
             <Button
+              type="submit"
               variant="contained"
+              onClick={() => {
+                formik.handleSubmit();
+              }}
               color="success"
               startIcon={<CheckCircleIcon />}
-              onClick={() => {
-                formik.handleSubmit;
-              }}
             >
               Cadastrar
             </Button>
