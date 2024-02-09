@@ -69,7 +69,7 @@ const Form = () => {
       name={"form-add-store"}
       onSubmit={formik.handleSubmit}
       noValidate
-      sx={{ mt: 1 }}
+      sx={{ mt: 5 }}
     >
       <Paper elevation={6} sx={{ padding: 5 }}>
         <Stack sx={{ marginBottom: 3 }}>
