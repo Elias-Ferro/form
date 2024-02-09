@@ -57,6 +57,9 @@ const Form = () => {
     },
   });
 
+  const touched = formik.touched;
+  const error = formik.errors;
+
   console.log(formik.values);
 
   return (
@@ -70,7 +73,7 @@ const Form = () => {
     >
       <Paper elevation={6} sx={{ padding: 5 }}>
         <Stack sx={{ marginBottom: 3 }}>
-          <Typography component={"h1"}>Cadastro de Cliente</Typography>
+          <Typography component={"h1"} fontWeight={700}>Cadastro de Cliente</Typography>
         </Stack>
         <Box autoCapitalize="off">
           <Grid container spacing={2}>
@@ -82,12 +85,8 @@ const Form = () => {
                 onChange={formik.handleChange}
                 required
                 fullWidth
-                error={formik.touched.name && !!formik.errors.name}
-                helperText={
-                  formik.touched.name &&
-                  formik.errors.name &&
-                  formik.errors.name
-                }
+                error={touched.name && !!error.name}
+                helperText={touched.name && error.name && error.name}
               />
             </Grid>
             <Grid item xs={12} sm={12} lg={6}>
@@ -97,9 +96,9 @@ const Form = () => {
                 value={formik.values.surname}
                 onChange={formik.handleChange}
                 fullWidth
-                error={formik.touched.surname && !!formik.errors.surname}
+                error={touched.surname && !!formik.errors.surname}
                 helperText={
-                  formik.touched.surname &&
+                  touched.surname &&
                   formik.errors.surname &&
                   formik.errors.surname
                 }
@@ -113,11 +112,9 @@ const Form = () => {
                 onChange={formik.handleChange}
                 required
                 fullWidth
-                error={formik.touched.email && !!formik.errors.email}
+                error={touched.email && !!formik.errors.email}
                 helperText={
-                  formik.touched.email &&
-                  formik.errors.email &&
-                  formik.errors.email
+                  touched.email && formik.errors.email && formik.errors.email
                 }
               />
             </Grid>
@@ -132,22 +129,20 @@ const Form = () => {
                 onChange={formik.handleChange}
                 required
                 fullWidth
-                error={formik.touched.phone && !!formik.errors.phone}
+                error={touched.phone && !!formik.errors.phone}
                 helperText={
-                  formik.touched.phone &&
-                  formik.errors.phone &&
-                  formik.errors.phone
+                  touched.phone && formik.errors.phone && formik.errors.phone
                 }
               />
             </Grid>
             <Grid item xs={12} sm={12} lg={12}>
-              <Accordion>
+              <Accordion defaultExpanded={true}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1-content"
                   id="panel1-header"
                 >
-                  <Typography>Endereço</Typography>
+                  <Typography fontWeight={700}>Endereço</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Grid container spacing={2}>
@@ -162,13 +157,12 @@ const Form = () => {
                         required
                         fullWidth
                         error={
-                          formik.touched.address?.zip_code &&
-                          !!formik.errors.address?.zip_code
+                          touched.address?.zip_code && !!error.address?.zip_code
                         }
                         helperText={
-                          formik.touched.address?.zip_code &&
-                          formik.errors.address?.zip_code &&
-                          formik.errors.address?.zip_code
+                          touched.address?.zip_code &&
+                          error.address?.zip_code &&
+                          error.address?.zip_code
                         }
                       />
                     </Grid>
@@ -181,13 +175,12 @@ const Form = () => {
                         required
                         fullWidth
                         error={
-                          formik.touched.address?.street &&
-                          !!formik.errors.address?.street
+                          touched.address?.street && !!error.address?.street
                         }
                         helperText={
-                          formik.touched.address?.street &&
-                          formik.errors.address?.street &&
-                          formik.errors.address?.street
+                          touched.address?.street &&
+                          error.address?.street &&
+                          error.address?.street
                         }
                       />
                     </Grid>
@@ -200,13 +193,12 @@ const Form = () => {
                         required
                         fullWidth
                         error={
-                          formik.touched.address?.number &&
-                          !!formik.errors.address?.number
+                          touched.address?.number && !!error.address?.number
                         }
                         helperText={
-                          formik.touched.address?.number &&
-                          formik.errors.address?.number &&
-                          formik.errors.address?.number
+                          touched.address?.number &&
+                          error.address?.number &&
+                          error.address?.number
                         }
                       />
                     </Grid>
@@ -219,13 +211,12 @@ const Form = () => {
                         required
                         fullWidth
                         error={
-                          formik.touched.address?.district &&
-                          !!formik.errors.address?.district
+                          touched.address?.district && !!error.address?.district
                         }
                         helperText={
-                          formik.touched.address?.district &&
-                          formik.errors.address?.district &&
-                          formik.errors.address?.district
+                          touched.address?.district &&
+                          error.address?.district &&
+                          error.address?.district
                         }
                       />
                     </Grid>
@@ -237,14 +228,11 @@ const Form = () => {
                         onChange={formik.handleChange}
                         required
                         fullWidth
-                        error={
-                          formik.touched.address?.city &&
-                          !!formik.errors.address?.city
-                        }
+                        error={touched.address?.city && !!error.address?.city}
                         helperText={
-                          formik.touched.address?.city &&
-                          formik.errors.address?.city &&
-                          formik.errors.address?.city
+                          touched.address?.city &&
+                          error.address?.city &&
+                          error.address?.city
                         }
                       />
                     </Grid>
@@ -257,13 +245,12 @@ const Form = () => {
                         required
                         fullWidth
                         error={
-                          formik.touched.address?.county &&
-                          !!formik.errors.address?.county
+                          touched.address?.county && !!error.address?.county
                         }
                         helperText={
-                          formik.touched.address?.county &&
-                          formik.errors.address?.county &&
-                          formik.errors.address?.county
+                          touched.address?.county &&
+                          error.address?.county &&
+                          error.address?.county
                         }
                       />
                     </Grid>
