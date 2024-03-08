@@ -1,30 +1,32 @@
-# React + TypeScript + Vite
+# Formulário de Cadastro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Modelo de Formulario de cadastro de cliente para uma aplicação real.
 
-Currently, two official plugins are available:
+**Table of Contents**
+  - [Vite](https://vitejs.dev/guide/)
+  - [Requirements](#requeriments)
+  - [Libs](#libs)
+  - [Run](#available-scripts)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Requeriments
+  - [Node](): v18.19.0
 
-## Expanding the ESLint configuration
+## Lib's
+  - [React](): v18.2.0
+  - [Formik](): v2.4.5
+  - [Material UI](): v5.15.9
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Available Scripts
+In the project directory, you can run:
 
-- Configure the top-level `parserOptions` property like this:
+### `npm install`
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+$ npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### `npm start`
+
+```bash
+$ npm run dev
+```
