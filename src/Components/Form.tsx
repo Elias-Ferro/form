@@ -268,6 +268,13 @@ const Form = () => {
                         fullWidth
                       />
                     </Grid>
+                    <Grid item xs={12} sm={4} lg={6}>
+                      <TextField
+                        name="exemplo"
+                        label="exemplo"
+                        fullWidth
+                      />
+                    </Grid>
                   </Grid>
                 </AccordionDetails>
               </Accordion>
