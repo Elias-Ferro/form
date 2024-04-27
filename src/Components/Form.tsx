@@ -17,10 +17,13 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Register } from "../Types/Register";
+import { getAddress } from "../service/getAddress";
+import { useState } from "react";
 
 const messageRequiredField = "Campo obrigatório!";
 
 const Form = () => {
+  const [addressData, setAddressData] = useState(null);
   const formik = useFormik<Register>({
     initialValues: {
       name: "",
@@ -60,7 +63,31 @@ const Form = () => {
   const touched = formik.touched;
   const error = formik.errors;
 
-  console.log(formik.values);
+  const handleZipCode = async (e) => {
+    const { value } = e.target;
+    formik.handleChange(e);
+
+    if (value.length === 8) {
+      const address = await getAddress(value);
+      setAddressData(address);
+      if (address) {
+        formik.setValues({
+          ...formik.values,
+          address: {
+            ...formik.values.address,
+            street: address.logradouro || formik.values.address.street,
+            district: address.bairro || formik.values.address.district,
+            city: address.localidade || formik.values.address.city,
+            county: address.uf || formik.values.address.county,
+            zip_code: value,
+            number: formik.values.address.number,
+            reference: formik.values.address.reference,
+            complement: formik.values.address.complement,
+          },
+        });
+      }
+    }
+  };
 
   return (
     <Box
@@ -73,7 +100,9 @@ const Form = () => {
     >
       <Paper elevation={6} sx={{ padding: 5 }}>
         <Stack sx={{ marginBottom: 3 }}>
-          <Typography component={"h1"} fontWeight={700}>Cadastro de Cliente</Typography>
+          <Typography component={"h1"} fontWeight={700}>
+            Cadastro de Cliente
+          </Typography>
         </Stack>
         <Box autoCapitalize="off">
           <Grid container spacing={2}>
@@ -150,10 +179,10 @@ const Form = () => {
                       <PatternFormat
                         name="zip_code"
                         label="CEP"
-                        format="##.###-###"
+                        format="########"
                         customInput={TextField}
                         value={formik.values.address?.zip_code}
-                        onChange={formik.handleChange}
+                        onChange={handleZipCode}
                         required
                         fullWidth
                         error={
@@ -207,7 +236,7 @@ const Form = () => {
                         name="district"
                         label="Bairro"
                         value={formik.values.address?.district}
-                        onChange={formik.handleChange}
+                        // onChange={formik.handleChange}
                         required
                         fullWidth
                         error={
@@ -265,13 +294,6 @@ const Form = () => {
                       <TextField
                         name="complement"
                         label="Complemento"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={4} lg={6}>
-                      <TextField
-                        name="exemplo"
-                        label="exemplo"
                         fullWidth
                       />
                     </Grid>
