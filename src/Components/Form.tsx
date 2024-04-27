@@ -236,7 +236,7 @@ const Form = () => {
                         name="district"
                         label="Bairro"
                         value={formik.values.address?.district}
-                        // onChange={formik.handleChange}
+                        onChange={formik.handleChange}
                         required
                         fullWidth
                         error={
